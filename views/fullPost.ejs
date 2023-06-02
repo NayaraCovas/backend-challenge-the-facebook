@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Post</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <h1>Welcome to Facebook</h1>
+
+    <div class="full-post">
+        <div class="text-post">
+         <h2><%=user.name %></h2>
+         <p name="PostContent" id="post-content"><%= user.message %></p>
+         <p>Added at: <%= user.create_at%></p>
+        </div>
+         
+        <form action="/delete-post/<%= user._id %>" method="post">
+            
+         <button>Delete</button>
+         <a href="/edit/<%=user._id %>">edit</a>
+    
+</body>
+</html>

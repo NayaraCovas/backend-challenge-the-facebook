@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page with pre-view of posts and add post buttom </title>
+    <!--Link css-->
+    <link rel="stylesheet" href="../public/style.css">
+  </head>
+  <body>    
+    <h1>Welcome to Facebook</h1>
+    <form action="/create-post" method="post">
+        <input type="text" name="name"   placeholder="Name">
+        <textarea name="message"></textarea>
+        <button>Add a Post</button> <!-- when clicked I see in the home page /feed the created post -->
+        
+    </form>
+    <div class="user-list">
+        <% for (let i=0; i<users.length;i++) {%>           
+
+        <div class="user-list-container"> 
+
+            <div class="text">
+                <h3 class="name-date"><span>Name: <%=users[i].name%></span></h3>
+                <p class="user-post"> Message: <%=users[i].message.slice(0,30) %></p>
+                <p>Added at: <%= users[i].create_at%></p>
+                <a href="/feed/<%=users[i]._id %>"> See more...</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+
+  </body>
+</html>
