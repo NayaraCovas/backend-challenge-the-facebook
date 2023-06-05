@@ -2,7 +2,7 @@ const feed = require('../model/Feed')
 
 const getHomePage = (req, res) =>{
     feed.find()
-    .then((result)=> res.render('index', {users: result}))
+    .then((result)=> res.render('index', {users: result, error: ''}))
     // we need to show the data in the home page
     .catch(err => console.log(err));   
 }
@@ -10,9 +10,14 @@ const getHomePage = (req, res) =>{
 const createPost = (req,res) =>{
     let newPost=new feed(req.body);
     // to be ble to copy from the model (the model was required with the variable post above)
-    newPost.save()
+    newPost.save()//goes to model and checks conditions
     .then((result)=> res.redirect('/feed'))
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+        feed.find() // finds all feeds/posts in the db
+        .then((result) => res.render('index', {users: result, error: err.errors.message}))
+        .catch(err => console.log(err));   
+    })
 }
 
 const getFullPost = (req, res) =>{

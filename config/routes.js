@@ -4,14 +4,14 @@ const userController=require('../controller/postsController')
 
 route.get('/feed', userController.getHomePage)
 
-route.post('/create-post',userController.createPost)
+route.post('/feed',userController.createPost)
 
 route.get('/feed/:id',userController.getFullPost);
 
 route.post('/delete-post/:id', userController.deletePost)
 
 //route editing
-route.get('/edit/:id', userController.editPost);
+route.get('/feed/edit/:id', userController.editPost);
 route.post('/update-post/:id', userController.updatePost)
 
 

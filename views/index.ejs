@@ -10,7 +10,7 @@
   </head>
   <body>    
     <h1>Welcome to Facebook</h1>
-    <form action="/create-post" method="post">
+    <form action="/feed" method="post">
         <input type="text" name="name"   placeholder="Name">
         <textarea name="message"></textarea>
         <button>Add a Post</button> <!-- when clicked I see in the home page /feed the created post -->
@@ -29,6 +29,10 @@
             </div>
         </div>
         <% } %>
+
+        <% if (error) { %>
+          <h3 class="result"><%= error %> </h3>
+      <% } %>
     </div>
 
 
